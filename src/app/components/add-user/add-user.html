@@ -1,5 +1,5 @@
 <section class="add-user">
-  <form>
+  <form [formGroup]="userForm" (ngSubmit)="createUser()">
     <div class="modal-header">
       <h4 class="modal-title">Add User</h4>
     </div>
@@ -8,32 +8,53 @@
         <div class="col-12 col-lg-4">
           <div class="form-group mb-3">
             <label>First Name</label>
-            <input type="text" class="form-control"/>
+            <input type="text" class="form-control" formControlName="firstName"/>
+            <ng-container *ngIf="!userForm.controls['firstName'].untouched && userForm.controls['firstName'].errors">
+              <ng-container *ngIf="userForm.controls['firstName'].errors['required']">
+                <small class="text-danger">This field is required</small>
+              </ng-container>
+            </ng-container>
           </div>
         </div>
         <div class="col-12 col-lg-4">
           <div class="form-group mb-3">
             <label>Last Name</label>
-            <input type="text" class="form-control"/>
+            <input type="text" class="form-control" formControlName="lastName"/>
+            <ng-container *ngIf="!userForm.controls['lastName'].untouched && userForm.controls['lastName'].errors">
+              <ng-container *ngIf="userForm.controls['lastName'].errors['required']">
+                <small class="text-danger">This field is required</small>
+              </ng-container>
+            </ng-container>
           </div>
         </div>
         <div class="col-12 col-lg-4">
           <div class="form-group mb-3">
             <label>Email</label>
-            <input type="email" class="form-control"/>
+            <input type="email" class="form-control" formControlName="email"/>
+            <ng-container *ngIf="!userForm.controls['email'].untouched && userForm.controls['email'].errors">
+              <ng-container *ngIf="userForm.controls['email'].errors['required']">
+                <small class="text-danger">This field is required</small>
+              </ng-container>
+              <ng-container *ngIf="userForm.controls['email'].errors['email']">
+                <small class="text-danger">Email entered is not valid</small>
+              </ng-container>
+            </ng-container>
           </div>
         </div>
         <div class="col-12 col-lg-12">
           <div class="form-group mb-3">
             <label>Description</label>
-            <textarea class="form-control"></textarea>
+            <textarea class="form-control" formControlName="description"></textarea>
           </div>
         </div>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
         <fa-icon [icon]="faUser" [fixedWidth]="true"></fa-icon> Create user
+      </button>
+      <button type="button" class="btn btn-info" (click)="closeModal()">
+        <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon> Reset Form
       </button>
       <button type="button" class="btn btn-danger" (click)="closeModal()">
         <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon> Close

@@ -11,6 +11,8 @@ import { ListUser } from './components/list-user/list-user';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClient, provideHttpClient} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,15 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient()
   ],
   bootstrap: [App]
 })
