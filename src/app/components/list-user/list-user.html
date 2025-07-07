@@ -1,0 +1,35 @@
+<section class="list-user">
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary" ngbTooltip="Edit User">
+                  <fa-icon [icon]="faPencil" [fixedWidth]="true"></fa-icon>
+                </button>
+                <button type="button" class="btn btn-danger" ngbTooltip="Delete User">
+                  <fa-icon [icon]="faTimes" [fixedWidth]="true"></fa-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

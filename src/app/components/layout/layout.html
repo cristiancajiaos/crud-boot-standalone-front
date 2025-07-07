@@ -1,0 +1,21 @@
+<section class="layout">
+  <h3 class="text-uppercase">User Administration</h3>
+  <div class="row">
+    <div class="col me-auto">
+      <button type="button" class="btn btn-primary" (click)="openAddUserModal()">
+        <fa-icon [icon]="faAdd" [fixedWidth]="true"></fa-icon>
+        <span>Add User</span>
+      </button>
+      <!--
+      <button type="button" class="btn btn-primary" (click)="openToastr()">
+        <span>Open Toastr</span>
+      </button>
+      -->
+      <button type="button" class="btn btn-primary" [swal]="{title: 'Foo'}">
+        <span>Open Toastr</span>
+      </button>
+    </div>
+  </div>
+  <hr/>
+  <app-list-user></app-list-user>
+</section>
